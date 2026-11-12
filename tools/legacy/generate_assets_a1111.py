@@ -2,9 +2,9 @@
 """烽火三国 · 局域网 AI 生图脚本（Stable Diffusion WebUI / A1111 API）
 
 用法：
-  python3 tools/generate_assets.py --url http://<your-sd-host>:7860
-  python3 tools/generate_assets.py --url http://127.0.0.1:7860 --only portraits
-  python3 tools/generate_assets.py --url http://... --list
+  python3 tools/legacy/generate_assets_a1111.py --url http://<your-sd-host>:7860
+  python3 tools/legacy/generate_assets_a1111.py --url http://127.0.0.1:7860 --only portraits
+  python3 tools/legacy/generate_assets_a1111.py --url http://... --list
 
 要求另一台电脑（或本机）运行 AUTOMATIC1111 Stable Diffusion WebUI，并带 --api --listen。
 脚本会调用 /sdapi/v1/txt2img，把图片写入 assets/portraits 与 assets/backdrops，
