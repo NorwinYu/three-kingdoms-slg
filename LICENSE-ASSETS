@@ -1,0 +1,24 @@
+烽火三国 Demo · Generated Assets License
+==========================================
+
+All character portraits, full-body unit sprites, item icons, building icons,
+terrain textures, battlefield backdrops, story videos and boss videos in this
+repository were generated with MiniMax H3 (image / video generation) for this
+non-commercial demo.
+
+They are licensed under the Creative Commons Attribution-NonCommercial 4.0
+International License (CC BY-NC 4.0):
+
+  https://creativecommons.org/licenses/by-nc/4.0/
+
+You may share and adapt these generated assets for non-commercial purposes,
+provided that attribution is given to this project. Commercial use is NOT
+permitted.
+
+Notes:
+- This project is a fan-made, non-commercial technical demo. It is not
+  affiliated with DeepSeek, MiniMax, or any game publisher.
+- The generated assets are AI outputs and may contain artifacts. They are
+  provided as-is, without warranty.
+- Three.js is licensed under the MIT License and is included separately.
+- The source code is licensed under the MIT License (see LICENSE).

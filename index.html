@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0b0f0e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<title>烽火三国 · 汉末风云</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <div id="bootScreen">
+    <div class="boot-ink"></div>
+    <div class="boot-seal">漢</div>
+    <div class="boot-title">烽火三國</div>
+    <div class="boot-line"></div>
+    <div class="boot-loading"><span id="bootText">正在铺展山河卷轴</span><i></i><i></i><i></i></div>
+    <div class="boot-version">汉末风云 · 战旗传　v1.0</div>
+  </div>
+
+  <section id="screen-menu" class="screen">
+    <canvas id="menu3d"></canvas>
+    <div class="menu-art" id="menuArt"></div>
+    <video class="menu-video" id="menuVideo" muted autoplay loop playsinline preload="auto"></video>
+    <div class="menu-vignette"></div>
+    <div class="menu-grain"></div>
+    <header class="menu-top">
+      <div class="brand-seal">蜀</div>
+      <div class="brand-copy">
+        <div class="brand-main">烽火三国</div>
+        <div class="brand-sub">汉末风云 · 战旗传</div>
+      </div>
+      <div class="menu-top-right">
+        <span class="menu-date" id="menuDate">中平元年 · 184年</span>
+        <span class="menu-line"></span>
+        <span class="menu-motto">天下大势，分久必合</span>
+      </div>
+    </header>
+
+    <main class="menu-main">
+      <div class="title-block">
+        <div class="title-kicker"><span></span> 汉 末 群 雄 志 <span></span></div>
+        <h1 class="game-title" aria-label="烽火三国">
+          <span class="title-ch">烽</span><span class="title-ch">火</span><span class="title-ch">三</span><span class="title-ch">国</span>
+        </h1>
+        <div class="title-en">BEACON OF THE THREE KINGDOMS</div>
+        <p class="title-poem">滚滚长江东逝水，浪花淘尽英雄。<br>是非成败转头空。青山依旧在，几度夕阳红。</p>
+      </div>
+      <nav class="menu-nav">
+        <button class="menu-btn primary" data-action="continue"><span class="mb-no">壹</span><span class="mb-label">继 续 征 程</span><span class="mb-en">CONTINUE</span></button>
+        <button class="menu-btn" data-action="new"><span class="mb-no">贰</span><span class="mb-label">新 的 征 程</span><span class="mb-en">NEW CAMPAIGN</span></button>
+        <button class="menu-btn" data-action="codex"><span class="mb-no">叁</span><span class="mb-label">三 国 图 鉴</span><span class="mb-en">ARCHIVES</span></button>
+        <button class="menu-btn" data-action="settings"><span class="mb-no">肆</span><span class="mb-label">设 置</span><span class="mb-en">SETTINGS</span></button>
+        <button class="menu-btn ghost" data-action="credits"><span class="mb-no">伍</span><span class="mb-label">制 作 名 单</span><span class="mb-en">CREDITS</span></button>
+      </nav>
+    </main>
+
+    <footer class="menu-foot">
+      <div class="foot-tip"><kbd>点击</kbd> 选择　<kbd>拖拽</kbd> 旋转战场　<kbd>滚轮</kbd> 缩放</div>
+      <div class="foot-build">单机 · 无需联网 · 自动存档</div>
+    </footer>
+  </section>
+
+  <section id="screen-campaign" class="screen">
+    <div class="campaign-paper"></div>
+    <header class="camp-top">
+      <div class="camp-identity">
+        <div class="camp-seal">蜀</div>
+        <div>
+          <div class="camp-name">刘备军</div>
+          <div class="camp-date" id="campDate">中平元年 · 春</div>
+        </div>
+      </div>
+      <div class="camp-res" id="campRes"></div>
+      <div class="camp-tools">
+        <button class="tool-btn" data-tool="roster" title="武将"><i>將</i><span>武将</span></button>
+        <button class="tool-btn" data-tool="tech" title="科技"><i>策</i><span>科技</span></button>
+        <button class="tool-btn" data-tool="diplomacy" title="外交"><i>盟</i><span>外交</span></button>
+        <button class="tool-btn" data-tool="shop" title="商肆"><i>市</i><span>商肆</span></button>
+        <button class="tool-btn" data-tool="codex" title="图鉴"><i>鉴</i><span>图鉴</span></button>
+        <button class="tool-btn" data-tool="save" title="存档"><i>存</i><span>存档</span></button>
+        <button class="tool-btn" data-tool="menu" title="菜单"><i>≡</i><span>菜单</span></button>
+      </div>
+    </header>
+
+    <div class="camp-body">
+      <aside class="camp-left">
+        <div class="chapter-card" id="chapterCard"></div>
+        <div class="objective-card" id="objectiveCard"></div>
+        <div class="camp-log" id="campLog"></div>
+      </aside>
+
+      <div class="map-shell" id="mapShell">
+        <canvas id="mapCanvas" width="1536" height="900"></canvas>
+        <div class="map-paper" id="mapPaper"></div>
+        <div class="map-frame"></div>
+        <div class="map-compass"><span>北</span><i></i></div>
+        <div class="map-hint" id="mapHint">选择城池，运筹天下</div>
+        <div class="map-tooltip" id="mapTooltip"></div>
+        <div class="map-legend">
+          <span><b class="lg shu"></b>刘备</span><span><b class="lg wei"></b>曹操</span><span><b class="lg wu"></b>孙权</span><span><b class="lg other"></b>群雄</span>
+        </div>
+        <div class="map-zoom" id="mapZoom">
+          <button data-zoom="in" aria-label="放大">＋</button>
+          <button data-zoom="out" aria-label="缩小">－</button>
+          <button data-zoom="fit" aria-label="全图">全</button>
+        </div>
+      </div>
+      <button class="mobile-city-toggle" id="mobileCityToggle"><span>城</span>城池</button>
+
+      <aside class="camp-right" id="cityPanel">
+        <div class="panel-empty">
+          <div class="empty-seal">城</div>
+          <p>点选城池<br>查看军情与内政</p>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="camp-bottom">
+      <div class="camp-orders">
+        <span class="orders-label">军令</span>
+        <div id="orderPips"></div>
+        <span class="orders-hint" id="ordersHint">每回合可出征两次</span>
+      </div>
+      <div class="camp-actions">
+        <button class="btn-ink ghost" id="btnStoryLog">章回</button>
+        <button class="btn-ink ghost" id="btnHelp">军略</button>
+        <button class="btn-endturn" id="btnEndTurn"><span>结束回合</span><em>END TURN</em></button>
+      </div>
+    </footer>
+  </section>
+
+  <section id="screen-battle" class="screen">
+    <div id="battleStage"></div>
+    <div class="battle-vignette"></div>
+    <div class="cinema-grade"></div>
+    <div class="cinema-bars" id="battleBars"><i></i><i></i></div>
+    <header class="battle-top">
+      <button class="battle-icon-btn" id="battlePause" title="暂停">Ⅱ</button>
+      <div class="battle-objective">
+        <span class="bo-kicker" id="battleChapter">第一回</span>
+        <span class="bo-text" id="battleObjective">击败全部敌军</span>
+      </div>
+      <div class="battle-weather" id="battleWeather"></div>
+      <div class="battle-speed">
+        <button data-speed="1" class="active">×1</button><button data-speed="2">×2</button><button data-speed="3">×3</button>
+        <button id="battleAuto" class="auto-toggle" title="自动战斗（A）">自动</button>
+      </div>
+    </header>
+
+    <aside class="battle-queue" id="battleQueue">
+      <div class="queue-title">行 动 序</div>
+      <div class="queue-list" id="queueList"></div>
+    </aside>
+
+    <aside class="battle-intel" id="battleIntel">
+      <div class="intel-empty">将鼠标移至武将<br>查看军情</div>
+    </aside>
+
+    <div class="battle-feed" id="battleFeed"></div>
+
+    <div class="battle-bottom">
+      <div class="battle-command" id="battleCommand"></div>
+      <div class="battle-actions" id="battleActions"></div>
+    </div>
+
+    <div id="battleTutorial" class="battle-tutorial hidden"></div>
+    <div class="battle-hint" id="battleHint">拖拽旋转视角 · 滚轮缩放</div>
+    <div class="phase-banner" id="phaseBanner"><div class="pb-kicker"></div><div class="pb-title"></div></div>
+    <div class="battle-cutin" id="battleCutin"><video class="cutin-video" id="cutinVideo" muted playsinline preload="auto"></video><img alt=""><div class="cutin-info"><div class="cutin-kicker"></div><div class="cutin-title"></div><div class="cutin-sub"></div></div></div>
+
+    <div class="battle-mobile-top" id="battleMobileTop">
+      <span class="bm-turn" id="mobileTurnChip">我方行动</span>
+      <div class="bm-cam">
+        <button data-cam="fit" aria-label="全图">全图</button>
+        <button data-cam="focus" aria-label="聚焦当前武将">聚焦</button>
+        <button data-cam="in" aria-label="放大">＋</button>
+        <button data-cam="out" aria-label="缩小">－</button>
+      </div>
+    </div>
+    <canvas id="battleMinimap" width="240" height="176" aria-label="战场小地图"></canvas>
+      <div class="mobile-queue-sheet" id="mobileQueue"><div class="mq-head"><span id="mqTitle">行动序</span><button data-mq-close>关闭</button></div><div class="mq-list" id="mqList"></div></div>
+    <div class="mobile-target-sheet" id="mobileTargets"></div>
+    <div class="mobile-info-card" id="mobileInfo"></div>
+    <div class="rotate-tip" id="rotateTip">横屏视野更佳 · 单指拖动平移 · 双指缩放</div>
+  </section>
+
+  <div id="storyRoot"></div>
+  <div id="modalRoot"></div>
+  <div id="toastRoot"></div>
+  <div id="fxRoot"></div>
+  <div id="transitionVeil"><div class="tv-seal">漢</div></div>
+</div>
+
+<script src="js/three.min.js"></script>
+<script src="assets/manifest.js"></script>
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/art.js"></script>
+<script src="js/core.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/campaign.js"></script>
+<script src="js/battle.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
