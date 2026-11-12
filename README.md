@@ -43,25 +43,84 @@ python3 -m http.server 8080
 
 ---
 
-## 预览
+## 特色展示
 
 ![主菜单](screenshots/menu.png)
-![汉末大地图](screenshots/campaign.png)
-![战斗沙盘](screenshots/battle.png)
-![章回演出](screenshots/story.png)
-![武将名册](screenshots/roster.png)
-![神兵图鉴](screenshots/codex-items.png)
-![科技图标](screenshots/tech-icons.png)
-![成就图标](screenshots/achievement-icons.png)
 
-手机竖屏：
+### 01 · Boss 图生视频登场
 
-<img src="screenshots/mobile-menu.png" width="260" alt="手机主菜单"> <img src="screenshots/mobile-battle.png" width="260" alt="手机战斗"> <img src="screenshots/mobile-campaign.png" width="260" alt="手机大地图">
+吕布、曹操、董卓的立绘用 MiniMax H3 做 image-to-video，战前 3 秒 cut-in：呼吸、眼神、盔甲反光、烟尘和缓慢推镜。
 
-手机横屏：
+![吕布 Boss 登场](screenshots/boss-cutin.png)
 
-![手机横屏大地图](screenshots/mobile-landscape-campaign.png)
+### 02 · 战棋沙盘
+
+12×9 网格、行动序、地形、天气、火场、高低差、反击、夹击、增援、Boss、自动战斗。  
+地面换成 **11 张生成地形纹理**，森林/丘陵使用生成式树木与巨石，全部单位显示 Canvas 血条。
+
+![战棋沙盘](screenshots/battle.png)
+
+### 03 · 布阵与武将养成
+
+最多 5 将出战，4 种阵形；47 名武将、等级/五维/忠诚、装备四槽与 4 套套装。
+
+| 布阵 | 套装 |
+|---|---|
+| <img src="screenshots/deployment.png" width="100%"> | <img src="screenshots/equipment-sets.png" width="100%"> |
+
+### 04 · 大地图经营
+
+11 座城池、内政、外交、科技、招贤、商肆、随机事件、章回目标。  
+大地图叠加生成式羊皮纸纹理。
+
+| 汉末大地图 | 城池营造 |
+|---|---|
+| <img src="screenshots/campaign.png" width="100%"> | <img src="screenshots/city-buildings.png" width="100%"> |
+
+### 05 · 科技树与收集
+
+兵法/农政/工造三系 12 节点，34 个战法图标、12 个成就图标、12 个科技图标全部生成并接入。
+
+| 科技树 | 成就 |
+|---|---|
+| <img src="screenshots/tech-icons.png" width="100%"> | <img src="screenshots/achievement-icons.png" width="100%"> |
+
+### 06 · 剧情与图鉴
+
+6 章章回、图生视频背景、Boss cut-in、人物/典故/神兵/成就图鉴。
+
+| 章回演出 | 神兵图鉴 |
+|---|---|
+| <img src="screenshots/story.png" width="100%"> | <img src="screenshots/codex-items.png" width="100%"> |
+
+### 07 · 手机端
+
+竖屏/横屏、单指平移、双指缩放、目标卡片、行动序抽屉、城池抽屉。
+
+<img src="screenshots/mobile-menu.png" width="240" alt="手机主菜单"> <img src="screenshots/mobile-battle.png" width="240" alt="手机战斗"> <img src="screenshots/mobile-campaign.png" width="240" alt="手机大地图">
+
 ![手机横屏战斗](screenshots/mobile-landscape-battle.png)
+
+### 08 · 存档与继续
+
+4 个存档位 + 自动存档，支持 JSON 导出/导入；浏览器 localStorage，无后端。
+
+![存档](screenshots/saves.png)
+
+---
+
+
+### 09 · AI 资产一览
+
+| 47 武将 + 6 兵种头像 | 53 个全身单位 |
+|---|---|
+| <img src="screenshots/portrait-grid.png" width="100%"> | <img src="screenshots/unit-grid.png" width="100%"> |
+
+| 34 个战法图标 | 11 张地形纹理 |
+|---|---|
+| <img src="screenshots/skill-icons.png" width="100%"> | <img src="screenshots/terrain-grid.png" width="100%"> |
+
+> 以上全部由 MiniMax H3 生成；UI、程序化音频与代码由 DeepSeek Flash 辅助生成。
 
 ---
 
